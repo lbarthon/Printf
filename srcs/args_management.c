@@ -6,11 +6,13 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:14:44 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/28 09:15:54 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/11/28 09:52:32 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_count_args(const char * str)
+#include <includes.h>
+
+void	ft_print_arg(const char *format, va_list *args)
 {
-	return (0);
+	
 }
