@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_module.c                                     :+:      :+:    :+:   */
+/*   ft_starts_with.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 09:31:27 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/28 11:27:29 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/28 13:03:09 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/28 13:58:58 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <includes.h>
-
-int		ft_print_till_next(const char *format)
+int		ft_starts_with(const char *s1, char *s2)
 {
-	int len;
+	int i;
 
-	len = ft_strclen_cst(format, '%');
-	write(1, format, len);
-	return (len);
+	i = 0;
+	while (s1 && s2 && s1[i] && s2[i])
+	{
+		if (s2[i] != s1[i])
+			return (0);
+		i++;
+	}
+	return (1);
 }

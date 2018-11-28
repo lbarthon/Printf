@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_module.c                                     :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 09:31:27 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/28 11:27:29 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:04:03 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/10 09:48:26 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <includes.h>
-
-int		ft_print_till_next(const char *format)
+int		ft_atoi(const char *str)
 {
-	int len;
+	long	result;
+	int		i;
+	int		sign;
 
-	len = ft_strclen_cst(format, '%');
-	write(1, format, len);
-	return (len);
+	i = 0;
+	result = 0;
+	while ((str[i] >= 8 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		sign = ((str[i++] == '-') ? -1 : 1);
+	while (str[i] >= '0' && str[i] <= '9')
+		result = (result * 10) + str[i++] - 48;
+	return ((sign == -1) ? -result : result);
 }

@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_module.c                                     :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 09:31:27 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/28 11:27:29 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:06:34 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/08 10:06:36 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <includes.h>
-
-int		ft_print_till_next(const char *format)
+int		ft_isdigit(int c)
 {
-	int len;
-
-	len = ft_strclen_cst(format, '%');
-	write(1, format, len);
-	return (len);
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

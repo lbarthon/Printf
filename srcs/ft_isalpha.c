@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_module.c                                     :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 09:31:27 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/28 11:27:29 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:05:49 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/08 10:05:50 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <includes.h>
-
-int		ft_print_till_next(const char *format)
+int		ft_isalpha(int c)
 {
-	int len;
-
-	len = ft_strclen_cst(format, '%');
-	write(1, format, len);
-	return (len);
+	if (c >= 65 && c <= 90)
+		return (1);
+	if (c >= 97 && c <= 122)
+		return (1);
+	return (0);
 }
