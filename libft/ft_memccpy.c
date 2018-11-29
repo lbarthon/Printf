@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:14:12 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/09 11:42:09 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include <string.h>
 
-int		ft_str_conv(const char *format, va_list *args)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	char	*str;
-	int		len;
+	char		*ptr_dest;
+	const char	*ptr_src;
+	size_t		i;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	ptr_dest = (char*)dest;
+	ptr_src = (const char*)src;
+	i = -1;
+	while (++i < n)
+	{
+		*(ptr_dest + i) = *(ptr_src + i);
+		if (ptr_src[i] == (char)c)
+			return (ptr_dest + i + 1);
+	}
+	return (NULL);
 }

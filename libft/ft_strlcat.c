@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:28:12 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/24 11:23:50 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include <string.h>
 
-int		ft_str_conv(const char *format, va_list *args)
+static size_t	ft_strlen(const char *str)
 {
-	char	*str;
-	int		len;
+	size_t	i;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+size_t			ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while (dst[i] && i < size)
+		i++;
+	while (src[j] && i + j + 1 < size)
+	{
+		dst[i + j] = src[j];
+		j++;
+	}
+	if (i != size)
+		dst[i + j] = '\0';
+	return (i + ft_strlen(src));
 }

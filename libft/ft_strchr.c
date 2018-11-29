@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:23:32 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/08 15:10:52 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include <string.h>
 
-int		ft_str_conv(const char *format, va_list *args)
+char	*ft_strchr(const char *str, int c)
 {
-	char	*str;
-	int		len;
+	int i;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == c)
+			return ((char*)str + i);
+		i++;
+	}
+	if (str[i] == '\0' && c == '\0')
+		return ((char*)str + i);
+	return (NULL);
 }

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:31:48 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/09 11:55:57 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include <string.h>
 
-int		ft_str_conv(const char *format, va_list *args)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*str;
-	int		len;
+	size_t i;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i] && i < n)
+		i++;
+	return ((i != n) ? ((unsigned char)s1[i] - (unsigned char)s2[i]) :
+			((unsigned char)s1[i - 1] - (unsigned char)s2[i - 1]));
 }

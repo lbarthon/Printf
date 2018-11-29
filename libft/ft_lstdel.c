@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/09 13:52:53 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/15 10:11:14 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include <stdlib.h>
+#include "libft.h"
 
-int		ft_str_conv(const char *format, va_list *args)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	char	*str;
-	int		len;
+	t_list *actual;
+	t_list *next;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	if (alst && *alst)
+	{
+		actual = *alst;
+		while (actual != NULL && actual)
+		{
+			next = actual->next;
+			del(actual->content, actual->content_size);
+			free(actual);
+			actual = next;
+		}
+		*alst = NULL;
+	}
 }

@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_contains.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/29 11:49:54 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/29 13:32:04 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
-
-int		ft_str_conv(const char *format, va_list *args)
+int		ft_contains(const char *str, const char *to_find)
 {
-	char	*str;
-	int		len;
+	int i;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	i = 0;
+	if (str && to_find)
+	{
+		while (str[i] && to_find[i])
+		{
+			if (str[i] != to_find[i])
+				return (0);
+			i++;
+		}
+		if (!to_find[i])
+			return (1);
+	}
+	return (0);
 }

@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:20:08 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/09 09:13:45 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include <string.h>
 
-int		ft_str_conv(const char *format, va_list *args)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*str;
-	int		len;
+	const unsigned char	*ptr1;
+	const unsigned char	*ptr2;
+	size_t				i;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	ptr1 = (unsigned char*)s1;
+	ptr2 = (unsigned char*)s2;
+	i = 0;
+	while (i < n && *(ptr1 + i) == *(ptr2 + i))
+		i++;
+	if (i < n && *(ptr1 + i) != *(ptr2 + i))
+		return (*(ptr1 + i) - *(ptr2 + i));
+	return (0);
 }

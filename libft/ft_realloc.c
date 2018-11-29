@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/12 09:08:23 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/24 11:23:40 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include "libft.h"
 
-int		ft_str_conv(const char *format, va_list *args)
+void	*ft_realloc(void *ptr, int size, int newsize)
 {
 	char	*str;
-	int		len;
+	char	*new;
+	int		i;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	str = (char*)ptr;
+	if (!(new = (char*)malloc(sizeof(char) * newsize + 1)))
+	{
+		if (ptr && size != 0)
+			free(ptr);
+		return (NULL);
+	}
+	i = -1;
+	while (++i < size)
+		*(new + i) = *(str + i);
+	while (i < newsize)
+		*(new + i++) = '\0';
+	if (ptr && size != 0)
+		free(ptr);
+	return (new);
 }

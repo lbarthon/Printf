@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:23:08 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/12 13:41:43 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
-
-int		ft_str_conv(const char *format, va_list *args)
+static int	ft_strlen(char *str)
 {
-	char	*str;
-	int		len;
+	int i;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	i = 0;
+	if (str)
+		while (str[i] != '\0')
+			i++;
+	return (i);
+}
+
+char		*ft_strcat(char *dest, const char *src)
+{
+	int i;
+	int j;
+
+	i = ft_strlen(dest);
+	j = 0;
+	while (src[j] != '\0')
+		dest[i++] = src[j++];
+	dest[i] = '\0';
+	return (dest);
 }

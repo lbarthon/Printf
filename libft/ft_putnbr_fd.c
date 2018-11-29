@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 12:19:31 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/09 09:45:40 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include <unistd.h>
 
-int		ft_str_conv(const char *format, va_list *args)
+static void	ft_putchar(char c, int fd)
 {
-	char	*str;
-	int		len;
+	write(fd, &c, 1);
+}
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+void		ft_putnbr_fd(int nb, int fd)
+{
+	if (nb == -2147483648)
+	{
+		ft_putchar('-', fd);
+		ft_putchar('2', fd);
+		nb = 147483648;
+	}
+	if (nb < 0)
+	{
+		ft_putchar('-', fd);
+		nb = -nb;
+	}
+	if (nb >= 10)
+		ft_putnbr_fd((int)nb / 10, fd);
+	ft_putchar(nb % 10 + 48, fd);
 }

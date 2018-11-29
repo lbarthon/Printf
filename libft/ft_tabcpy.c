@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_tabcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/12 11:49:05 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/13 13:33:04 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include "libft.h"
 
-int		ft_str_conv(const char *format, va_list *args)
+char	**ft_tabcpy(char **dest, const char **src)
 {
-	char	*str;
-	int		len;
+	int i;
+	int j;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	i = 0;
+	while (src[i])
+	{
+		j = 0;
+		if (!(dest[i] = (char*)malloc(sizeof(char) * ft_strlen(src[i]) + 1)))
+			return (NULL);
+		while (src[i][j])
+		{
+			dest[i][j] = src[i][j];
+			j++;
+		}
+		dest[i][j] = '\0';
+		i++;
+	}
+	dest[i] = NULL;
+	return (dest);
 }

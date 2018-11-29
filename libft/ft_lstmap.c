@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/09 14:04:32 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/10 09:19:52 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include <stdlib.h>
+#include "libft.h"
 
-int		ft_str_conv(const char *format, va_list *args)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char	*str;
-	int		len;
+	t_list *list;
+	t_list *new;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	list = NULL;
+	if (lst && f)
+	{
+		new = f(lst);
+		list = new;
+		lst = lst->next;
+		while (lst)
+		{
+			new->next = f(lst);
+			new = new->next;
+			lst = lst->next;
+		}
+	}
+	return (list);
 }

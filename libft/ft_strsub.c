@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 11:08:22 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/09 11:58:03 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include <string.h>
+#include <stdlib.h>
 
-int		ft_str_conv(const char *format, va_list *args)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
-	int		len;
+	char	*new;
+	size_t	pos;
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+	if (!(new = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	pos = -1;
+	while (++pos < len && s)
+		new[pos] = s[start + pos];
+	new[pos] = '\0';
+	return (new);
 }

@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_conversion.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:37:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 12:10:34 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/29 13:10:26 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-int		ft_str_conv(const char *format, va_list *args)
+static void	ft_putchar(char c)
 {
-	char	*str;
-	int		len;
+	write(1, &c, 1);
+}
 
-	str = va_arg(*args, char *);
-	len = ft_get_precision(format);
-	if (len == 0 || len > ft_strlen_cst(str))
-		len = ft_strlen_cst(str);
-	ft_putnstr(str, len);
-	return (len);
+void		ft_putnbr_printf(long long nb)
+{
+	unsigned long long nbr;
+
+	if (nb < 0)
+		nbr = -nb;
+	else
+		nbr = nb;
+	if (nbr >= 10L)
+		ft_putnbr_printf(nbr / 10L);
+	ft_putchar((nbr % 10) + 48);
 }
