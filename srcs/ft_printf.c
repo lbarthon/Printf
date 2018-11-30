@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:06:36 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:44:55 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/11/30 13:49:54 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		ft_printf(const char *restrict format, ...)
 		pos += len;
 		if (!(format + pos) || !*(format + pos) ||
 				pos >= ft_strlen_cst(format))
-			break;
+			break ;
 		len = ft_print_arg(format + pos, &args);
 		total_len += len;
 		pos += ft_get_next_pos(format + pos);
