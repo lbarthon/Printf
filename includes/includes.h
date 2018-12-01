@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:11:12 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 11:32:15 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/01 12:46:02 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int					ft_str_conv(const char *format, va_list *args);
 int					ft_ptr_conv(const char *format, va_list *args);
 int					ft_int_conv(const char *format, va_list *args);
 int					ft_hex_conv(const char *format, va_list *args);
+int					ft_hex_maj_conv(const char *format, va_list *args);
 
 /*
 ** Lib functions

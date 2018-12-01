@@ -6,7 +6,7 @@
 #    By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 08:54:45 by lbarthon          #+#    #+#              #
-#    Updated: 2018/12/01 09:54:21 by lbarthon         ###   ########.fr        #
+#    Updated: 2018/12/01 12:47:53 by lbarthon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS=./srcs/args_module.c \
 	 ./srcs/ft_putnbr_printf.c \
 	 ./srcs/ft_starts_with.c \
 	 ./srcs/hex_conversion.c \
+	 ./srcs/hex_maj_conversion.c \
 	 ./srcs/int_conversion.c \
 	 ./srcs/lengths.c \
 	 ./srcs/print_module.c \
