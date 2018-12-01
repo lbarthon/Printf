@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 12:59:22 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/30 13:50:14 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/01 08:10:05 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,19 @@ int					ft_print_arg(const char *format, va_list *args)
 {
 	const char	*c;
 	t_printf	*list;
-	int			len;
 
 	c = ft_check_char(format);
 	list = ft_struct(1);
-	len = 0;
+	if (c && (*c) == '%')
+	{
+		ft_putchar('%');
+		return (1);
+	}
 	while (c && list)
 	{
 		if (ft_starts_with(c, list->str))
-		{
-			len = list->fct(format, args);
-			break ;
-		}
+			return (list->fct(format, args));
 		list = list->next;
 	}
-	return (!c ? 0 : len);
+	return (0);
 }

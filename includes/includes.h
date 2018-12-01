@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:11:12 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/30 12:58:50 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/01 08:46:22 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_printf {
 
 t_printf			*ft_struct(int i);
 
+int					ft_get_min_length(const char *format);
 int					ft_get_precision(const char *format);
 int					ft_has_char(const char *format, const char c);
 
@@ -35,9 +36,10 @@ int					ft_has_char(const char *format, const char c);
 ** Different conversions
 */
 
-int					ft_str_conv(const char *format, va_list *args);
-int					ft_int_conv(const char *format, va_list *args);
 int					ft_char_conv(const char *format, va_list *args);
+int					ft_str_conv(const char *format, va_list *args);
+int					ft_ptr_conv(const char *format, va_list *args);
+int					ft_int_conv(const char *format, va_list *args);
 
 /*
 ** Lib functions
@@ -54,6 +56,8 @@ int					ft_strclen_cst(const char *str, char c);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 char				*ft_strdup(const char *str);
+char				*ft_strnew(size_t size);
+char				*ft_strcat(char *dest, const char *src);
 
 /*
 ** More functions
@@ -63,6 +67,7 @@ int					ft_starts_with(const char *s1, char *s2);
 int					ft_isprintf(int c);
 int					ft_isflag(int c);
 int					ft_contains(const char *str, const char *to_find);
+char				*ft_lltohex(long long nbr);
 
 /*
 ** Print functions
@@ -70,7 +75,8 @@ int					ft_contains(const char *str, const char *to_find);
 
 void				ft_putnstr(const char *s, int n);
 void				ft_putchar(char c);
-int					ft_print_chars(int nbr_len, int c);
-int					ft_putnbr_printf(long long nb);
+
+int					ft_putnbr_flags(const char *format, long long nb,
+		int min_len);
 
 #endif

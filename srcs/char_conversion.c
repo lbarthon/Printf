@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:15:17 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 11:58:19 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/01 08:16:37 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,20 @@
 int		ft_char_conv(const char *format, va_list *args)
 {
 	unsigned char	c;
+	int				min_len;
+	int				len;
 
 	c = va_arg(*args, int);
-	write(1, &c, 1);
-	return (!format ? 0 : 1);
+	min_len = ft_get_min_length(format) - 1;
+	len = 0;
+	while (min_len-- > 0)
+	{
+		ft_putchar(' ');
+		len++;
+	}
+	if (c)
+		ft_putchar(c);
+	else
+		ft_putchar(' ');
+	return (len + 1);
 }

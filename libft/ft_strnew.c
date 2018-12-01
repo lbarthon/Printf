@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:33:56 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/09 16:09:31 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/01 09:09:44 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ char	*ft_strnew(size_t size)
 	i = 0;
 	while (i < (size + 1))
 		*(str + i++) = '\0';
-	*(str + i) = '\0';
 	return (str);
 }
