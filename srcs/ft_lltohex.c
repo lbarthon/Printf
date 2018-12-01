@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 08:27:09 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 08:50:27 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/01 09:56:34 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_hex_size(long long nb)
 	unsigned long long	nbr;
 	int					size;
 
-	size = 2;
+	size = 0;
 	if (nb < 0)
 		nbr = -nb;
 	else
@@ -34,16 +34,19 @@ static int	ft_hex_size(long long nb)
 	return (size);
 }
 
-char		*ft_lltohex(long long nbr)
+char		*ft_lltohex(long long nbr, int addr)
 {
 	char	*hex;
 	int		i;
 	int		pos;
 
 	pos = ft_hex_size(nbr);
-	if (!(hex = ft_strnew(pos + 1)))
+	if (addr)
+		pos += 2;
+	if (!(hex = ft_strnew(pos + 3)))
 		return (NULL);
-	ft_strcat(hex, "0x");
+	if (addr)
+		ft_strcat(hex, "0x");
 	while (nbr > 0)
 	{
 		i = nbr % 16;

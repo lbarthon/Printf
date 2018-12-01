@@ -6,12 +6,30 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:06:36 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 08:10:58 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/01 11:39:34 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
-#include <stdio.h>
+
+int		ft_print_chars(int times, int c)
+{
+	char	buff[32];
+	int		i;
+
+	i = 0;
+	while (i < 32)
+		buff[i++] = c;
+	i = times;
+	while (i >= 32)
+	{
+		write(1, buff, 32);
+		i -= 32;
+	}
+	if (i != 0)
+		write(1, buff, i);
+	return ((times > 0 ? times : 0));
+}
 
 int		ft_get_next_pos(const char *format)
 {

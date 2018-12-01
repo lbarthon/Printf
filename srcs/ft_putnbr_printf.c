@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 12:10:34 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 07:24:51 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/01 11:40:52 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,16 @@ static int	ft_print_two(long long nb, int sign, int prec, int min_len)
 		prec = min_len;
 		min_len = 0;
 	}
-	while (--min_len > prec)
-	{
-		ft_putchar(' ');
-		len++;
-	}
+	len += ft_print_chars(min_len - prec - 1, ' ');
 	if (sign == 2 && nb >= 0 && ++len)
 		ft_putchar(' ');
 	else if (sign == 1 && nb >= 0 && ++len)
 		ft_putchar('+');
 	else if (nb < 0)
 		ft_putchar('-');
-	while (prec-- > (nb < 0 ? ft_nbrlength(nb) - 1 : ft_nbrlength(nb)))
-	{
-		ft_putchar('0');
-		len++;
-	}
-	return (len + ft_putnbr_printf(nb));
+	len += ft_print_chars(prec - ft_nbrlength(nb) - (nb < 0 ? -1 : 0), '0');
+	len += ft_putnbr_printf(nb);
+	return (len);
 }
 
 static int	ft_print(long long nb, int sign, int prec, int min_len)
@@ -68,17 +61,9 @@ static int	ft_print(long long nb, int sign, int prec, int min_len)
 			ft_putchar('+');
 		else if (nb < 0)
 			ft_putchar('-');
-		while (prec-- > (nb < 0 ? ft_nbrlength(nb) - 1 : ft_nbrlength(nb)))
-		{
-			ft_putchar('0');
-			len++;
-		}
+		len += ft_print_chars(prec - ft_nbrlength(nb) - (nb < 0 ? -1 : 0), '0');
 		len += ft_putnbr_printf(nb);
-		while (len < min_len)
-		{
-			ft_putchar(' ');
-			len++;
-		}
+		len += ft_print_chars(min_len - len, ' ');
 		return (len);
 	}
 	return (ft_print_two(nb, sign, prec, min_len));
