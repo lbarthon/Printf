@@ -6,7 +6,7 @@
 #    By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 08:54:45 by lbarthon          #+#    #+#              #
-#    Updated: 2018/12/01 12:47:53 by lbarthon         ###   ########.fr        #
+#    Updated: 2018/12/03 11:46:10 by lbarthon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS=./srcs/args_module.c \
 	 ./srcs/ft_contains.c \
 	 ./srcs/ft_isprintf.c \
 	 ./srcs/ft_lltohex.c \
+	 ./srcs/ft_lltooctal.c \
 	 ./srcs/ft_printf.c \
 	 ./srcs/ft_putnbr_printf.c \
 	 ./srcs/ft_starts_with.c \
@@ -27,10 +28,13 @@ SRCS=./srcs/args_module.c \
 	 ./srcs/hex_maj_conversion.c \
 	 ./srcs/int_conversion.c \
 	 ./srcs/lengths.c \
+	 ./srcs/octal_conversion.c \
+	 ./srcs/percent_conversion.c \
 	 ./srcs/print_module.c \
 	 ./srcs/ptr_conversion.c \
 	 ./srcs/str_conversion.c \
-	 ./srcs/struct_module.c
+	 ./srcs/struct_module.c \
+	 ./srcs/unsigned_conversion.c
 OBJ=$(SRCS:.c=.o)
 
 LIBFILES=./libft/ft_atoi.c \
@@ -38,6 +42,7 @@ LIBFILES=./libft/ft_atoi.c \
 		 ./libft/ft_isdigit.c \
 		 ./libft/ft_nbrlength.c \
 		 ./libft/ft_strcat.c \
+		 ./libft/ft_strcmp.c \
 		 ./libft/ft_strdup.c \
 		 ./libft/ft_strnew.c \
 		 ./libft/ft_putchar.c \

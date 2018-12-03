@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:11:12 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 12:46:02 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/03 11:45:58 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,11 @@ int					ft_char_conv(const char *format, va_list *args);
 int					ft_str_conv(const char *format, va_list *args);
 int					ft_ptr_conv(const char *format, va_list *args);
 int					ft_int_conv(const char *format, va_list *args);
+int					ft_octal_conv(const char *format, va_list *args);
+int					ft_unsigned_conv(const char *format, va_list *args);
 int					ft_hex_conv(const char *format, va_list *args);
 int					ft_hex_maj_conv(const char *format, va_list *args);
+int					ft_percent_conv(const char *format, va_list *args);
 
 /*
 ** Lib functions
@@ -60,6 +63,7 @@ int					ft_isdigit(int c);
 char				*ft_strdup(const char *str);
 char				*ft_strnew(size_t size);
 char				*ft_strcat(char *dest, const char *src);
+int					ft_strcmp(const char *s1, const char *s2);
 
 /*
 ** More functions
@@ -69,7 +73,8 @@ int					ft_starts_with(const char *s1, char *s2);
 int					ft_isprintf(int c);
 int					ft_isflag(int c);
 int					ft_contains(const char *str, const char *to_find);
-char				*ft_lltohex(long long nbr, int addr);
+char				*ft_lltohex(unsigned long long nbr, int addr);
+char				*ft_lltooctal(unsigned long long nbr);
 
 /*
 ** Print functions

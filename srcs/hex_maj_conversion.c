@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 12:42:19 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 12:47:43 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/03 11:48:46 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,19 @@ static int	ft_has_moins(const char *format, char **hex, int prec, int min_len)
 	return (len);
 }
 
+static char	*ft_get_good_arg(const char *format, va_list *args)
+{
+	if (ft_contains(format, "hh"))
+		return (ft_lltohex((unsigned char)va_arg(*args, unsigned int), 0));
+	if (ft_contains(format, "ll"))
+		return (ft_lltohex(va_arg(*args, unsigned long long), 0));
+	if (ft_has_char(format, 'h'))
+		return (ft_lltohex((unsigned short)va_arg(*args, unsigned int), 0));
+	if (ft_has_char(format, 'l'))
+		return (ft_lltohex((unsigned long)va_arg(*args, unsigned long), 0));
+	return (ft_lltohex((unsigned int)va_arg(*args, unsigned int), 0));
+}
+
 int			ft_hex_maj_conv(const char *format, va_list *args)
 {
 	char	*hex;
@@ -59,7 +72,7 @@ int			ft_hex_maj_conv(const char *format, va_list *args)
 	int		min_len;
 	int		prec;
 
-	if (!(hex = ft_lltohex((unsigned int)va_arg(*args, unsigned int), 0)))
+	if (!(hex = ft_get_good_arg(format, args)))
 		return (0);
 	min_len = ft_get_min_length(format);
 	prec = ft_get_precision(format);
@@ -76,7 +89,7 @@ int			ft_hex_maj_conv(const char *format, va_list *args)
 	else
 		len += ft_suite(min_len, prec, ft_strlen(hex));
 	len += ft_strlen(hex);
-	ft_putnstr(ft_upcase(hex), ft_strlen(hex));
+	ft_putnstr(ft_upcase(hex), prec);
 	free(hex);
 	return (len);
 }

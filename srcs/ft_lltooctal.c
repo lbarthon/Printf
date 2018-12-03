@@ -1,22 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprintf.c                                      :+:      :+:    :+:   */
+/*   ft_lltooctal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 10:14:24 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 10:48:28 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/12/03 09:31:34 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/12/03 09:45:51 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-int		ft_isprintf(int c)
+static int	ft_get_octal_len(unsigned long long nbr)
 {
-	if (c == 'd' || c == 'i' || c == 'x' || c == 'X' || c == 'o' || c == 'u')
-		return (1);
-	if (c == 'c' || c == 's' || c == 'p' || c == 'f' || c == '%')
-		return (1);
-	return (0);
+	int len;
+
+	len = 1;
+	while (nbr >= 8)
+	{
+		nbr /= 8;
+		len++;
+	}
+	return (len);
+}
+
+char		*ft_lltooctal(unsigned long long nbr)
+{
+	char	*str;
+	int		len;
+
+	len = ft_get_octal_len(nbr);
+	if (!(str = (char*)malloc(len + 1)))
+		return (NULL);
+	str[len] = '\0';
+	while (len--)
+	{
+		str[len] = (nbr % 8) + 48;
+		nbr /= 8;
+	}
+	return (str);
 }

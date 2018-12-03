@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprintf.c                                      :+:      :+:    :+:   */
+/*   unsigned_conversion.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 10:14:24 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 10:48:28 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/12/03 10:20:31 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/12/03 10:21:06 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-int		ft_isprintf(int c)
+int		ft_unsigned_conv(const char *format, va_list *args)
 {
-	if (c == 'd' || c == 'i' || c == 'x' || c == 'X' || c == 'o' || c == 'u')
-		return (1);
-	if (c == 'c' || c == 's' || c == 'p' || c == 'f' || c == '%')
-		return (1);
+	format = NULL;
+	args = NULL;
 	return (0);
 }

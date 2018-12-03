@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 11:57:10 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 12:46:31 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/03 10:40:19 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ static void	ft_init(t_printf **list)
 	ft_add_new(list, "p", &ft_ptr_conv);
 	ft_add_new(list, "d", &ft_int_conv);
 	ft_add_new(list, "i", &ft_int_conv);
+	ft_add_new(list, "o", &ft_octal_conv);
 	ft_add_new(list, "x", &ft_hex_conv);
 	ft_add_new(list, "X", &ft_hex_maj_conv);
+	ft_add_new(list, "%", &ft_percent_conv);
 }
 
 static void	ft_cyalist(t_printf **list)

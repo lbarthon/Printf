@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:06:36 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 11:39:34 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/03 12:01:15 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		ft_printf(const char *restrict format, ...)
 			break ;
 		len = ft_print_arg(format + pos, &args);
 		total_len += len;
-		pos += ft_get_next_pos(format + pos);
+		pos += 1 + ft_get_next_pos(format + pos + 1);
 	}
 	va_end(args);
 	ft_struct(2);

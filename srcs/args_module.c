@@ -6,12 +6,11 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 12:59:22 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 08:10:05 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/03 12:01:10 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
-#include <stdio.h>
 
 int					ft_get_precision(const char *format)
 {
@@ -52,8 +51,6 @@ static const char	*ft_check_char(const char *format)
 	i = 1;
 	if (!format[i])
 		return (NULL);
-	if (format[i] == '%')
-		return (format + i);
 	while (format[i] && !ft_isprintf(format[i]))
 		i++;
 	if (format[i] && ft_isprintf(format[i]))
@@ -68,15 +65,10 @@ int					ft_print_arg(const char *format, va_list *args)
 
 	c = ft_check_char(format);
 	list = ft_struct(1);
-	if (c && (*c) == '%')
-	{
-		ft_putchar('%');
-		return (1);
-	}
 	while (c && list)
 	{
 		if (ft_starts_with(c, list->str))
-			return (list->fct(format, args));
+			return (list->fct(format + 1, args));
 		list = list->next;
 	}
 	return (0);

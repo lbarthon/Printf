@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 12:02:28 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/03 11:59:19 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,21 @@ int		ft_str_conv(const char *format, va_list *args)
 	int		min_len;
 
 	str = va_arg(*args, char *);
+	if (!str)
+	{
+		ft_putnstr("(null)", 6);
+		return (6);
+	}
 	len = ft_get_precision(format);
 	min_len = ft_get_min_length(format);
 	if (len == 0 || len > ft_strlen_cst(str))
 		len = ft_strlen_cst(str);
+	if (ft_has_char(format, '-'))
+	{
+		ft_putnstr(str, len);
+		spaces = ft_print_chars(min_len - len, ' ');
+		return (len + spaces);
+	}
 	spaces = ft_print_chars(min_len - len, ' ');
 	ft_putnstr(str, len);
 	return (len + spaces);

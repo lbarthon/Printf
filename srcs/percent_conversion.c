@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char_conversion.c                                  :+:      :+:    :+:   */
+/*   percent_conversion.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 15:15:17 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 11:51:43 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/12/03 10:35:20 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/12/03 10:59:02 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-int		ft_char_conv(const char *format, va_list *args)
+int		ft_percent_conv(const char *format, va_list *args)
 {
-	unsigned char	c;
-	int				min_len;
-	int				len;
+	int len;
+	int prec;
+	int min_len;
 
-	c = va_arg(*args, int);
-	min_len = ft_get_min_length(format) - 1;
+	min_len = ft_get_min_length(format);
+	prec = ft_get_precision(format);
 	if (ft_has_char(format, '-'))
 	{
-		if (c)
-			ft_putchar(c);
+		ft_putchar('%');
+		if (min_len > prec)
+			len = 1 + ft_print_chars(min_len - 1, ' ');
 		else
-			ft_putnstr("^@", 2);
-		len = ft_print_chars(min_len, ' ');
+			len = 1 + ft_print_chars(prec - 1, ' ');
 	}
 	else
 	{
-		len = ft_print_chars(min_len, ' ');
-		if (c)
-			ft_putchar(c);
+		if (min_len > prec)
+			len = 1 + ft_print_chars(min_len - 1, ' ');
 		else
-			ft_putnstr("^@", 2);
+			len = 1 + ft_print_chars(prec - 1, ' ');
+		ft_putchar('%');
 	}
-	return (len + 1);
+	return (args ? len : len);
 }
