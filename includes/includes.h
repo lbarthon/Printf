@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:11:12 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 11:45:58 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/04 11:50:53 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int					ft_isflag(int c);
 int					ft_contains(const char *str, const char *to_find);
 char				*ft_lltohex(unsigned long long nbr, int addr);
 char				*ft_lltooctal(unsigned long long nbr);
+char				*ft_upcase(char *str);
+int					ft_has_zero(const char *format);
 
 /*
 ** Print functions

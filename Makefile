@@ -6,7 +6,7 @@
 #    By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 08:54:45 by lbarthon          #+#    #+#              #
-#    Updated: 2018/12/03 11:46:10 by lbarthon         ###   ########.fr        #
+#    Updated: 2018/12/04 11:45:58 by lbarthon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRCS=./srcs/args_module.c \
 	 ./srcs/ptr_conversion.c \
 	 ./srcs/str_conversion.c \
 	 ./srcs/struct_module.c \
-	 ./srcs/unsigned_conversion.c
+	 ./srcs/unsigned_conversion.c \
+	 ./srcs/utils.c
 OBJ=$(SRCS:.c=.o)
 
 LIBFILES=./libft/ft_atoi.c \

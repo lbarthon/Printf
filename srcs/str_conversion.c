@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 13:20:42 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 11:59:19 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/04 13:45:26 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int		ft_str_conv(const char *format, va_list *args)
 	int		spaces;
 	int		min_len;
 
-	str = va_arg(*args, char *);
-	if (!str)
+	if (!(str = va_arg(*args, char *)))
 	{
 		ft_putnstr("(null)", 6);
 		return (6);

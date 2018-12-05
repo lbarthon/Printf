@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 09:46:46 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 12:00:47 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/04 13:01:33 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ static char	*ft_get_good_arg(const char *format, va_list *args)
 	return (ft_lltooctal((unsigned int)va_arg(*args, unsigned int)));
 }
 
+static int	ft_get_custom_precision(const char *format, int min_len, char *oct)
+{
+	int prec;
+
+	prec = ft_get_precision(format);
+	if (ft_has_zero(format) && min_len > prec && !ft_has_char(format, '-'))
+		return (min_len);
+	if (prec < ft_strlen(oct) && prec != 0)
+		return (ft_has_char(format, '#') ? ft_strlen(oct) + 1 : ft_strlen(oct));
+	return (ft_has_char(format, '#') ? prec + 1 : prec);
+}
+
 int			ft_octal_conv(const char *format, va_list *args)
 {
 	char	*octal;
@@ -35,23 +47,21 @@ int			ft_octal_conv(const char *format, va_list *args)
 	if (!(octal = ft_get_good_arg(format, args)))
 		return (0);
 	min_len = ft_get_min_length(format);
-	prec = ft_get_precision(format);
-	if (ft_has_char(format, '#') && prec <= ft_strlen(octal))
-		prec = ft_strlen(octal) + 1;
-	if (prec < ft_strlen(octal))
-		prec = ft_strlen(octal);
+	prec = ft_get_custom_precision(format, min_len, octal);
 	if (ft_has_char(format, '-'))
 	{
 		len = ft_print_chars(prec - ft_strlen(octal), '0');
-		ft_putnstr(octal, ft_strlen(octal));
+		if (prec != 0)
+			ft_putnstr(octal, ft_strlen(octal));
 		len += ft_print_chars(min_len - prec, ' ');
 	}
 	else
 	{
 		len = ft_print_chars(min_len - prec, ' ');
 		len += ft_print_chars(prec - ft_strlen(octal), '0');
-		ft_putnstr(octal, ft_strlen(octal));
+		if (prec != 0)
+			ft_putnstr(octal, ft_strlen(octal));
 	}
 	free(octal);
-	return (len + ft_strlen(octal));
+	return (prec == 0 ? len : len + ft_strlen(octal));
 }

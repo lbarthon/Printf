@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 08:27:09 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 09:36:35 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/04 09:21:39 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,11 @@
 
 #include "includes.h"
 
-static int	ft_hex_size(long long nb)
+static int	ft_hex_size(unsigned long long nbr)
 {
-	unsigned long long	nbr;
-	int					size;
+	int size;
 
 	size = 0;
-	if (nb < 0)
-		nbr = -nb;
-	else
-		nbr = nb;
 	while (nbr > 15)
 	{
 		size++;
@@ -47,7 +42,7 @@ char		*ft_lltohex(unsigned long long nbr, int addr)
 		return (NULL);
 	if (addr)
 		ft_strcat(hex, "0x");
-	while (nbr > 0)
+	while (nbr > 15)
 	{
 		i = nbr % 16;
 		if (i < 10)
@@ -56,5 +51,9 @@ char		*ft_lltohex(unsigned long long nbr, int addr)
 			hex[pos--] = 'a' - 10 + i;
 		nbr /= 16;
 	}
+	if (nbr < 10)
+		hex[pos--] = 48 + nbr;
+	else
+		hex[pos--] = 'a' - 10 + nbr;
 	return (hex);
 }

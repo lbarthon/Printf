@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flags_module.c                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 07:54:58 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/04 13:47:14 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/12/04 11:45:21 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/12/04 11:45:31 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
-
-int		ft_isflag(int c)
+char	*ft_upcase(char *str)
 {
-	if (c == '-' || c == '+' || c == ' ' || c == '#' || c == 'l' || c == 'h')
-		return (1);
-	return (0);
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 97 && str[i] <= 122)
+			str[i] -= 32;
+		i++;
+	}
+	return (str);
 }

@@ -6,11 +6,12 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 12:10:34 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 11:37:58 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/04 15:56:12 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
+#include <stdio.h>
 
 static int	ft_putnbr_printf(long long nb)
 {
@@ -32,18 +33,23 @@ static int	ft_print_two(long long nb, int sign, int prec, int min_len)
 
 	len = 0;
 	if (sign / 100 == 1 && prec == 1)
-	{
 		prec = min_len;
-		min_len = 0;
-	}
-	len += ft_print_chars(min_len - prec - (sign % 10 || nb < 0), ' ');
+	if (prec < ft_nbrlength(nb))
+		len += ft_print_chars(min_len - ft_nbrlength(nb) -
+				(sign % 10 && nb >= 0), ' ');
+	else
+		len += ft_print_chars(min_len - prec -
+				((sign % 10 && nb >= 0) || nb < 0), ' ');
 	if (sign % 10 == 2 && nb >= 0 && ++len)
 		ft_putchar(' ');
 	else if (sign % 10 == 1 && nb >= 0 && ++len)
 		ft_putchar('+');
 	else if (nb < 0)
 		ft_putchar('-');
-	len += ft_print_chars(prec - ft_nbrlength(nb) - (nb < 0 ? -1 : 0), '0');
+	if (prec > 0 && min_len >= prec)
+		len += ft_print_chars(min_len - ft_nbrlength(nb) - len, 48);
+	else if (prec > 0)
+		len += ft_print_chars(prec - ft_nbrlength(nb) + (nb < 0), 48);
 	len += ft_putnbr_printf(nb);
 	return (len);
 }
@@ -80,7 +86,7 @@ int			ft_putnbr_flags(const char *format, long long nb, int min_len)
 		sign = 1;
 	if (ft_has_char(format, '-'))
 		sign += 10;
-	if (ft_has_char(format, '0') && sign < 10)
+	if (ft_has_zero(format) && sign < 10)
 		sign += 100;
 	return (ft_print(nb, sign, ft_get_precision(format), min_len));
 }

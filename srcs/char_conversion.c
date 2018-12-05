@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:15:17 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 11:51:43 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/04 13:51:14 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		ft_char_conv(const char *format, va_list *args)
 	{
 		if (c)
 			ft_putchar(c);
-		else
+		else if (c == 0)
 			ft_putnstr("^@", 2);
 		len = ft_print_chars(min_len, ' ');
 	}
@@ -33,7 +33,7 @@ int		ft_char_conv(const char *format, va_list *args)
 		len = ft_print_chars(min_len, ' ');
 		if (c)
 			ft_putchar(c);
-		else
+		else if (c == 0)
 			ft_putnstr("^@", 2);
 	}
 	return (len + 1);

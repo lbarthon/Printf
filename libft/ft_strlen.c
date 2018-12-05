@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 10:28:58 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/08 10:28:58 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/03 13:00:32 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,15 @@ size_t	ft_strlen(const char *str)
 	size_t i;
 
 	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	while (*str)
+	{
+		str += 4;
+		i += 4;
+	}
+	while (*str == 0)
+	{
+		str--;
+		i--;
+	}
+	return (i + 1);
 }

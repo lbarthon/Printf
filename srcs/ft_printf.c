@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:06:36 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 12:01:15 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/04 13:47:52 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,27 @@ int		ft_get_next_pos(const char *format)
 	i = 0;
 	if (format)
 	{
-		if (ft_starts_with(format, "%%"))
-			return (2);
+		if (*format == '%')
+			return (1);
 		while (format[i])
 		{
 			if (ft_isprintf(format[i]))
 				return (i + 1);
+			if (!ft_isflag(format[i]) && !ft_isdigit(format[i]) &&
+					format[i] != '.')
+				return (i);
 			i++;
 		}
 	}
 	return (1);
+}
+
+int		ft_is_ended(const char *format, int pos)
+{
+	if (!(format + pos) || !*(format + pos) ||
+			pos >= ft_strlen_cst(format))
+		return (1);
+	return (0);
 }
 
 int		ft_printf(const char *restrict format, ...)
@@ -66,12 +77,13 @@ int		ft_printf(const char *restrict format, ...)
 		len = ft_print_till_next(format + pos);
 		total_len += len;
 		pos += len;
-		if (!(format + pos) || !*(format + pos) ||
-				pos >= ft_strlen_cst(format))
+		if (ft_is_ended(format, pos))
 			break ;
 		len = ft_print_arg(format + pos, &args);
 		total_len += len;
 		pos += 1 + ft_get_next_pos(format + pos + 1);
+		if (ft_is_ended(format, pos))
+			break ;
 	}
 	va_end(args);
 	ft_struct(2);

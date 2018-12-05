@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 12:59:22 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 12:01:10 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/04 14:08:57 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,26 @@ int					ft_get_min_length(const char *format)
 	i = 0;
 	while (*format && *(format + i) && !ft_isprintf(*(format + i)))
 	{
+		if (*(format + i) == '0')
+			i++;
+		if (*(format + i) == '.')
+			break ;
 		if (!ft_isflag(*(format + i)) && *(format + i) != '%')
 			return (ft_atoi(format + i));
 		i++;
+	}
+	return (0);
+}
+
+int					ft_has_zero(const char *format)
+{
+	while (format && *format)
+	{
+		if ((*format) == '0')
+			return (1);
+		if (ft_isdigit(*format) || ft_isprintf(*format))
+			return (0);
+		format++;
 	}
 	return (0);
 }
@@ -55,7 +72,13 @@ static const char	*ft_check_char(const char *format)
 		i++;
 	if (format[i] && ft_isprintf(format[i]))
 		return (format + i);
-	return (NULL);
+	if (!format[i])
+	{
+		i = 1;
+		while (ft_isdigit(format[i]) || ft_isflag(format[i]))
+			i++;
+	}
+	return (format + i);
 }
 
 int					ft_print_arg(const char *format, va_list *args)
