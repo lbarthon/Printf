@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:11:12 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/04 11:50:53 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/06 08:34:06 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int					ft_octal_conv(const char *format, va_list *args);
 int					ft_unsigned_conv(const char *format, va_list *args);
 int					ft_hex_conv(const char *format, va_list *args);
 int					ft_hex_maj_conv(const char *format, va_list *args);
+int					ft_float_conv(const char *format, va_list *args);
 int					ft_percent_conv(const char *format, va_list *args);
 
 /*
@@ -77,6 +78,8 @@ char				*ft_lltohex(unsigned long long nbr, int addr);
 char				*ft_lltooctal(unsigned long long nbr);
 char				*ft_upcase(char *str);
 int					ft_has_zero(const char *format);
+int					ft_ldlen(long double nbr, int prec);
+char				*ft_ldtoa(long double nbr, int prec);
 
 /*
 ** Print functions

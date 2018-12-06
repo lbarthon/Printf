@@ -6,11 +6,11 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 11:45:21 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/04 11:45:31 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/05 14:54:21 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_upcase(char *str)
+char		*ft_upcase(char *str)
 {
 	int i;
 

@@ -6,9 +6,13 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 09:31:34 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 09:45:51 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/05 09:05:35 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** Warning, this function uses malloc, the char* need to be free to avoid leaks
+*/
 
 #include "includes.h"
 

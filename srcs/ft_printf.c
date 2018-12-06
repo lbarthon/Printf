@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:06:36 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/04 13:47:52 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/05 11:18:07 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		ft_get_next_pos(const char *format)
 				return (i + 1);
 			if (!ft_isflag(format[i]) && !ft_isdigit(format[i]) &&
 					format[i] != '.')
-				return (i);
+				return (i + 1);
 			i++;
 		}
 	}

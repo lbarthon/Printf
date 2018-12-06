@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 14:58:02 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 07:29:50 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/05 10:38:45 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ int			ft_int_conv(const char *format, va_list *args)
 	int nbr;
 	int len;
 
-	if ((len = ft_short_short_conv(format, args)))
-		return (len);
 	if ((len = ft_long_long_conv(format, args)))
 		return (len);
-	if ((len = ft_short_conv(format, args)))
-		return (len);
 	if ((len = ft_long_conv(format, args)))
+		return (len);
+	if ((len = ft_short_short_conv(format, args)))
+		return (len);
+	if ((len = ft_short_conv(format, args)))
 		return (len);
 	nbr = va_arg(*args, int);
 	return (ft_putnbr_flags(format, nbr, ft_get_min_length(format)));

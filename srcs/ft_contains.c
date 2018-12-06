@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 11:49:54 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/30 13:50:07 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/05 09:18:02 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ int		ft_has_char(const char *format, const char c)
 	int i;
 
 	i = 0;
-	while (format && *(format + i) && !ft_isprintf(*(format + i)))
+	while (format && format[i] && (ft_isdigit(format[i]) ||
+				ft_isflag(format[i]) || format[i] == '.'))
 	{
-		if (*(format + i) == c)
+		if (format[i] == c)
 			return (1);
 		i++;
 	}

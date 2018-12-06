@@ -6,12 +6,11 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 09:50:57 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/04 12:49:41 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/12/05 10:39:35 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
-#include <stdio.h>
 
 static int	ft_suite(int min_len, int prec, int hex_len, char *hex)
 {
@@ -47,14 +46,14 @@ static int	ft_has_moins(const char *format, char **hex, int prec, int min_len)
 
 static char	*ft_get_good_arg(const char *format, va_list *args)
 {
-	if (ft_contains(format, "hh"))
-		return (ft_lltohex((unsigned char)va_arg(*args, unsigned int), 0));
 	if (ft_contains(format, "ll"))
 		return (ft_lltohex(va_arg(*args, unsigned long long), 0));
-	if (ft_has_char(format, 'h'))
-		return (ft_lltohex((unsigned short)va_arg(*args, unsigned int), 0));
 	if (ft_has_char(format, 'l'))
 		return (ft_lltohex((unsigned long)va_arg(*args, unsigned long), 0));
+	if (ft_contains(format, "hh"))
+		return (ft_lltohex((unsigned char)va_arg(*args, unsigned int), 0));
+	if (ft_has_char(format, 'h'))
+		return (ft_lltohex((unsigned short)va_arg(*args, unsigned int), 0));
 	return (ft_lltohex((unsigned int)va_arg(*args, unsigned int), 0));
 }
 

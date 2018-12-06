@@ -6,7 +6,7 @@
 #    By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 08:54:45 by lbarthon          #+#    #+#              #
-#    Updated: 2018/12/04 11:45:58 by lbarthon         ###   ########.fr        #
+#    Updated: 2018/12/05 15:53:28 by lbarthon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,10 @@ NAME=libftprintf.a
 SRCS=./srcs/args_module.c \
 	 ./srcs/char_conversion.c \
 	 ./srcs/flags_module.c \
+	 ./srcs/float_conversion.c \
 	 ./srcs/ft_contains.c \
 	 ./srcs/ft_isprintf.c \
+	 ./srcs/ft_ldtoa.c \
 	 ./srcs/ft_lltohex.c \
 	 ./srcs/ft_lltooctal.c \
 	 ./srcs/ft_printf.c \
