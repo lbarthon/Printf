@@ -15,22 +15,24 @@
 
 # include "libft.h"
 # include <stdarg.h>
+		
+typedef struct s_printf	t_printf;
 
-typedef struct s_pfmodule	t_pfmodule;
+typedef struct	s_pfmodule {
+	void	(*exec)(t_printf *);
+	char	c;
+}				t_pfmodule;
 
-typedef struct	s_printf {
+struct			s_printf {
 	const char	*format;
 	size_t		index;
+	va_list		*args;
 	char		buffer[2048];
 	short		buff_len;
 	size_t		total_len;
 	int			fd;
-	t_pfmodule	*modules[16];
-}				t_printf;
-
-struct			s_pfmodule {
-	int		(*exec)(t_printf *);
-	char	c;
+	t_pfmodule	modules[16];
+	char		modules_len;
 };
 
 /*
@@ -44,6 +46,7 @@ int				ft_printf(const char *restrict format, ...);
 */
 
 void			print_buffer(t_printf *data, char force);
+void			buffer_add_char(t_printf *data, char c);
 void			buffer_add_str(t_printf *data, char *str, size_t end);
 void			buffer_add_format(t_printf *data, size_t end);
 

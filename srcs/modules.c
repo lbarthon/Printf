@@ -14,5 +14,22 @@
 
 void	modules_handler(t_printf *data)
 {
+	char	m;
+	int		i;
+	int		j;
 
+	i = 0;
+	while ((m = *(data->format + data->index + i)))
+	{
+		j = -1;
+		while (++j < data->modules_len)
+			if (data->modules[j].c == m)
+			{
+				data->modules[j].exec(data);
+				data->index += i + 1;
+				return ;
+			}
+		i++;
+	}
+	buffer_add_format(data, i);
 }

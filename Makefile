@@ -12,10 +12,13 @@
 
 CC=@gcc
 CFLAGS=-Wall -Werror -Wextra -I includes
+#CPPFLAGS=-g -fsanitize=address
 
 NAME=libftprintf.a
 SRCS=./srcs/ft_printf.c \
 		 ./srcs/modules.c \
+		 ./srcs/modules/string.c \
+		 ./srcs/modules/int.c \
 		 ./srcs/buffer.c
 
 OBJ=$(SRCS:.c=.o)

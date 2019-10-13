@@ -14,11 +14,17 @@
 
 void	print_buffer(t_printf *data, char force)
 {
-	if (!force && data->buff_len != 2048)
+	if ((!force && data->buff_len != 2048) || data->buff_len == 0)
 		return ;
 	write(data->fd, data->buffer, data->buff_len);
 	data->total_len += data->buff_len;
 	data->buff_len = 0;
+}
+
+void	buffer_add_char(t_printf *data, char c)
+{
+	data->buffer[data->buff_len++] = c;
+	print_buffer(data, 0);
 }
 
 void	buffer_add_str(t_printf *data, char *str, size_t end)
@@ -33,7 +39,7 @@ void	buffer_add_str(t_printf *data, char *str, size_t end)
 			copy_len = end - i;
 		else
 			copy_len = 2048 - data->buff_len;
-		ft_memcpy(data->buffer, str + i, copy_len);
+		ft_memcpy(data->buffer + data->buff_len, str + i, copy_len);
 		data->buff_len += copy_len;
 		print_buffer(data, 0);
 		i += copy_len;
@@ -42,6 +48,6 @@ void	buffer_add_str(t_printf *data, char *str, size_t end)
 
 void	buffer_add_format(t_printf *data, size_t end)
 {
-	buffer_add_str(data, (char*)data->format + data->index, end);
+	buffer_add_str(data, (char*)data->format + data->index, end - data->index);
 	data->index = end;
 }
