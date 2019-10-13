@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprintf.c                                      :+:      :+:    :+:   */
+/*   modules.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 10:14:24 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/03 10:48:28 by lbarthon         ###   ########.fr       */
+/*   Created: 2019/10/13 13:41:13 by lbarthon          #+#    #+#             */
+/*   Updated: 2019/10/13 15:01:25 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include "printf.h" 
 
-int		ft_isprintf(int c)
+void	modules_handler(t_printf *data)
 {
-	if (c == 'd' || c == 'i' || c == 'x' || c == 'X' || c == 'o' || c == 'u')
-		return (1);
-	if (c == 'c' || c == 's' || c == 'p' || c == 'f' || c == '%')
-		return (1);
-	return (0);
+
 }

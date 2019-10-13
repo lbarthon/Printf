@@ -6,13 +6,13 @@
 #    By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:51:15 by lbarthon          #+#    #+#              #
-#    Updated: 2019/10/13 11:26:00 by lbarthon         ###   ########.fr        #
+#    Updated: 2019/10/13 13:47:36 by lbarthon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra
+CFLAGS=-Wall -Werror -Wextra -I../includes
 
 FILES=ft_atoi.c ft_lstdel.c ft_memcpy.c ft_putnbr_fd.c ft_strdup.c \
 	  ft_strncat.c ft_strsub.c ft_bzero.c ft_lstdelone.c ft_memdel.c \
