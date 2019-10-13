@@ -6,22 +6,18 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:33:56 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 09:09:44 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/13 11:43:03 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strnew(size_t size)
 {
 	char	*str;
-	size_t	i;
 
-	if (!(str = (char*)malloc(sizeof(char) * (size + 1))))
+	if (!(str = (char*)malloc(size + 1)))
 		return (NULL);
-	i = 0;
-	while (i < (size + 1))
-		*(str + i++) = '\0';
+	ft_bzero(str, size + 1);
 	return (str);
 }

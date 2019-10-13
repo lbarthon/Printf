@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 10:04:03 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/01 09:04:41 by lbarthon         ###   ########.fr       */
+/*   Updated: 2018/11/10 09:48:26 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		ft_atoi(const char *str)
 
 	i = 0;
 	result = 0;
-	sign = 0;
 	while ((str[i] >= 8 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	if (str[i] == '-' || str[i] == '+')

@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 09:59:47 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/12/06 11:55:01 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/09 13:52:53 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/15 10:11:14 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-void	ft_putnstr(char *str, int n)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	if (str)
+	t_list *actual;
+	t_list *next;
+
+	if (alst && *alst)
 	{
-		if ((int)ft_strlen(str) < n)
-			n = (int)ft_strlen(str);
-		write(1, str, n);
+		actual = *alst;
+		while (actual != NULL && actual)
+		{
+			next = actual->next;
+			del(actual->content, actual->content_size);
+			free(actual);
+			actual = next;
+		}
+		*alst = NULL;
 	}
 }

@@ -6,12 +6,12 @@
 #    By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 08:54:45 by lbarthon          #+#    #+#              #
-#    Updated: 2018/12/05 15:53:28 by lbarthon         ###   ########.fr        #
+#    Updated: 2019/10/13 11:50:25 by lbarthon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=@gcc
-CFLAGS=-g -Wall -Werror -Wextra -I includes
+CFLAGS=-Wall -Werror -Wextra -I includes
 
 NAME=libftprintf.a
 SRCS=./srcs/args_module.c \
@@ -40,27 +40,23 @@ SRCS=./srcs/args_module.c \
 	 ./srcs/utils.c
 OBJ=$(SRCS:.c=.o)
 
-LIBFILES=./libft/ft_atoi.c \
-		 ./libft/ft_isalpha.c \
-		 ./libft/ft_isdigit.c \
-		 ./libft/ft_nbrlength.c \
-		 ./libft/ft_strcat.c \
-		 ./libft/ft_strcmp.c \
-		 ./libft/ft_strdup.c \
-		 ./libft/ft_strnew.c \
-		 ./libft/ft_putchar.c \
-		 ./libft/ft_putnstr.c
-LIBOBJ=$(LIBFILES:.c=.o)
+LIB_DIR=libft
+LIB_NAME=$(LIB_DIR)/libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBOBJ)
-	@ar -rcs $(NAME) $(OBJ) $(LIBOBJ)
+$(NAME): $(LIB_NAME) $(OBJ)
+	@libtool -static -o $(NAME) $^
+
+$(LIB_NAME):
+	@make -C $(LIB_DIR)
 
 clean:
-	@rm -f $(OBJ) $(LIBOBJ)
+	@make -C $(LIB_DIR) clean
+	@rm -f $(OBJ)
 
 fclean: clean
+	@make -C $(LIB_DIR) fclean
 	@rm -rf $(NAME)
 
 re: fclean all

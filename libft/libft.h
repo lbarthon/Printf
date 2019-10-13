@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 13:40:48 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/29 13:01:04 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/13 11:40:32 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,9 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 void			*ft_realloc(void *ptr, int size, int newsize);
 int				ft_tablength(char **tab);
-int				ft_nbrlength(long long n);
+int				ft_intlength(int n);
 char			**ft_tabcpy(char **dest, const char **src);
 int				ft_strclen(char *str, char c);
 char			*ft_strcdup(char *str, char c);
-size_t			ft_strlen_nofault(char *str);
-void			ft_putnstr(char *str, int n);
 
 #endif

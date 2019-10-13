@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 10:27:55 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/13 11:34:11 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:20:08 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/09 09:13:45 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-char		*ft_strdup(const char *str)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		i;
-	char	*dup;
+	const unsigned char	*ptr1;
+	const unsigned char	*ptr2;
+	size_t				i;
 
-	if (!(dup = (char*)malloc(ft_strlen(str) + 1)))
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		dup[i] = str[i];
-	dup[i] = '\0';
-	return (dup);
+	ptr1 = (unsigned char*)s1;
+	ptr2 = (unsigned char*)s2;
+	i = 0;
+	while (i < n && *(ptr1 + i) == *(ptr2 + i))
+		i++;
+	if (i < n && *(ptr1 + i) != *(ptr2 + i))
+		return (*(ptr1 + i) - *(ptr2 + i));
+	return (0);
 }

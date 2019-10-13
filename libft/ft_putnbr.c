@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbrlength.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 13:02:27 by lbarthon          #+#    #+#             */
-/*   Updated: 2018/11/30 07:33:37 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 12:10:34 by lbarthon          #+#    #+#             */
+/*   Updated: 2019/10/13 11:32:08 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int		ft_nbrlength(long long n)
+void		ft_putnbr(int nb)
 {
-	int					size;
-	unsigned long long	nb;
-
-	size = 1;
-	if (n < 0)
+	if (nb == -2147483648)
 	{
-		size++;
-		nb = -n;
+		ft_putchar('-');
+		ft_putchar('2');
+		nb = 147483648;
 	}
-	else
-		nb = n;
-	while (nb >= 10L)
+	if (nb < 0)
 	{
-		size++;
-		nb /= 10L;
+		ft_putchar('-');
+		nb *= -1L;
 	}
-	return (size);
+	if (nb >= 10)
+		ft_putnbr(nb / 10);
+	ft_putchar(nb % 10 + 48);
 }
