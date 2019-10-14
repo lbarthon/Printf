@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 10:27:55 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/13 11:34:11 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/09 14:04:32 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/10 09:19:52 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-char		*ft_strdup(const char *str)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	int		i;
-	char	*dup;
+	t_list *list;
+	t_list *new;
 
-	if (!(dup = (char*)malloc(ft_strlen(str) + 1)))
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		dup[i] = str[i];
-	dup[i] = '\0';
-	return (dup);
+	list = NULL;
+	if (lst && f)
+	{
+		new = f(lst);
+		list = new;
+		lst = lst->next;
+		while (lst)
+		{
+			new->next = f(lst);
+			new = new->next;
+			lst = lst->next;
+		}
+	}
+	return (list);
 }

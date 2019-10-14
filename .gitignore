@@ -1,1 +1,3 @@
-tests/*
+*.o
+libftprintf.a
+*.swp

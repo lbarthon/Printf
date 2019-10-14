@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 10:27:55 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/13 11:34:11 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:52:59 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/09 11:46:23 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char		*ft_strdup(const char *str)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	int		i;
-	char	*dup;
+	int i;
 
-	if (!(dup = (char*)malloc(ft_strlen(str) + 1)))
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		dup[i] = str[i];
-	dup[i] = '\0';
-	return (dup);
+	i = 0;
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	if (s1[i] == s2[i])
+		return (1);
+	return (0);
 }

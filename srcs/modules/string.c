@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 10:27:55 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/13 11:34:11 by lbarthon         ###   ########.fr       */
+/*   Created: 2019/10/14 09:52:43 by lbarthon          #+#    #+#             */
+/*   Updated: 2019/10/14 11:55:50 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "printf_internal.h"
 
-char		*ft_strdup(const char *str)
+void	string_handler(t_printf *data, t_flags *flags)
 {
-	int		i;
-	char	*dup;
+	char	*str;
+	size_t	len;
 
-	if (!(dup = (char*)malloc(ft_strlen(str) + 1)))
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		dup[i] = str[i];
-	dup[i] = '\0';
-	return (dup);
+	if (!(str = va_arg(*data->args, char *)))
+		str = "(null)";
+	len = ft_strlen(str);
+	if (flags->minlen < len)
+		buffer_add_str(data, str, flags->minlen);
+	else
+		add_with_flags(data, flags, str, flags->zero);
 }

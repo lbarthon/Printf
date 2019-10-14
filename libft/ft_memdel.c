@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 10:27:55 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/13 11:34:11 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/07 15:31:51 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/16 10:33:00 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
+#include <stdlib.h>
 
-char		*ft_strdup(const char *str)
+void	ft_memdel(void **ap)
 {
-	int		i;
-	char	*dup;
-
-	if (!(dup = (char*)malloc(ft_strlen(str) + 1)))
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		dup[i] = str[i];
-	dup[i] = '\0';
-	return (dup);
+	if (ap && *ap)
+	{
+		free(*ap);
+		*ap = NULL;
+	}
 }

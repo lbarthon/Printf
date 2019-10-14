@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 10:23:08 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/13 11:32:50 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:20:51 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/12 10:20:13 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
+#include <stdlib.h>
 
-char		*ft_strcat(char *dest, const char *src)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int i;
-	int j;
+	char		*ptr_dest;
+	const char	*ptr_src;
 
-	i = ft_strlen(dest);
-	j = 0;
-	while (src[j] != '\0')
-		dest[i++] = src[j++];
-	dest[i] = '\0';
+	ptr_dest = (char*)dest;
+	ptr_src = (const char*)src;
+	if (n == 0)
+		return (dest);
+	if (ptr_src < ptr_dest)
+	{
+		ptr_dest = ptr_dest + n - 1;
+		ptr_src = ptr_src + n - 1;
+		while (n-- > 0)
+			*ptr_dest-- = *ptr_src--;
+	}
+	else
+		while (n > 0)
+		{
+			*ptr_dest++ = *ptr_src++;
+			n--;
+		}
 	return (dest);
 }

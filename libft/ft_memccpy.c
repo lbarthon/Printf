@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 10:27:55 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/13 11:34:11 by lbarthon         ###   ########.fr       */
+/*   Created: 2018/11/08 10:14:12 by lbarthon          #+#    #+#             */
+/*   Updated: 2018/11/09 11:42:09 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-char		*ft_strdup(const char *str)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	int		i;
-	char	*dup;
+	char		*ptr_dest;
+	const char	*ptr_src;
+	size_t		i;
 
-	if (!(dup = (char*)malloc(ft_strlen(str) + 1)))
-		return (NULL);
+	ptr_dest = (char*)dest;
+	ptr_src = (const char*)src;
 	i = -1;
-	while (str[++i])
-		dup[i] = str[i];
-	dup[i] = '\0';
-	return (dup);
+	while (++i < n)
+	{
+		*(ptr_dest + i) = *(ptr_src + i);
+		if (ptr_src[i] == (char)c)
+			return (ptr_dest + i + 1);
+	}
+	return (NULL);
 }
