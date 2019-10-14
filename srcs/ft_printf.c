@@ -6,14 +6,11 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:06:36 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/13 15:00:26 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/14 11:25:58 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-
-void	string_handler(t_printf *data);
-void	int_handler(t_printf *data);
+#include "printf_internal.h"
 
 static void		init_printf(t_printf *data, const char *format, va_list *args)
 {
@@ -26,7 +23,8 @@ static void		init_printf(t_printf *data, const char *format, va_list *args)
 	data->fd = 1;
 	data->modules[0] = (t_pfmodule) {&string_handler, 's'};
 	data->modules[1] = (t_pfmodule) {&int_handler, 'd'};
-	data->modules_len = 2;
+	data->modules[2] = (t_pfmodule) {&pointer_handler, 'p'};
+	data->modules_len = 3;
 }
 
 static void		end_printf(t_printf *data)

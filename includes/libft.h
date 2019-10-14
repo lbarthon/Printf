@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 13:40:48 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/13 11:40:32 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/14 10:54:07 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,6 @@ int				ft_intlength(int n);
 char			**ft_tabcpy(char **dest, const char **src);
 int				ft_strclen(char *str, char c);
 char			*ft_strcdup(char *str, char c);
+void			ft_fill(char *str, int len, char c);
 
 #endif

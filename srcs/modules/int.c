@@ -1,32 +1,47 @@
-// Add header
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   int.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/14 09:59:40 by lbarthon          #+#    #+#             */
+/*   Updated: 2019/10/14 11:55:38 by lbarthon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "printf.h"
+#include "printf_internal.h"
 
 static size_t	get_pow(long long nbr)
 {
 	size_t	pow;
 
 	pow = 10;
-	while (pow < (size_t)nbr)
+	while (pow <= (size_t)nbr)
 		pow *= 10;
 	return (pow / 10);
 }
 
-void			int_handler(t_printf *data)
+void			int_handler(t_printf *data, t_flags *flags)
 {
+	char		ret[64];
 	long long	nbr;
 	size_t		pow;
+	int			i;
 
+	i = 0;
+	ft_bzero(ret, 64);
 	nbr = va_arg(*data->args, int);
 	if (nbr < 0)
 	{
-		buffer_add_char(data, '-');
+		ret[i++] = '-';
 		nbr = -nbr;
 	}
 	pow = get_pow(nbr);
-	while (pow >= 1)
+	while (pow > 0)
 	{
-		buffer_add_char(data, ((int)(nbr / pow) % 10) + 48);
+		ret[i++] = ((int)(nbr / pow) % 10) + 48;
 		pow = pow == 1 ? 0 : pow / 10;
 	}
+	add_with_flags(data, flags, ret, flags->zero || flags->dot);
 }

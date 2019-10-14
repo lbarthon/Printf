@@ -6,11 +6,11 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 14:53:13 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/13 14:58:01 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/14 10:53:29 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "printf_internal.h"
 
 void	print_buffer(t_printf *data, char force)
 {
