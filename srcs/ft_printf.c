@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:06:36 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/14 11:25:58 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/15 11:40:45 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static void		init_printf(t_printf *data, const char *format, va_list *args)
 	data->modules[0] = (t_pfmodule) {&string_handler, 's'};
 	data->modules[1] = (t_pfmodule) {&int_handler, 'd'};
 	data->modules[2] = (t_pfmodule) {&pointer_handler, 'p'};
-	data->modules_len = 3;
+	data->modules[3] = (t_pfmodule) {&char_handler, 'c'};
+	data->modules_len = 4;
 }
 
 static void		end_printf(t_printf *data)
