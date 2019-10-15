@@ -6,7 +6,7 @@
 #    By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:51:15 by lbarthon          #+#    #+#              #
-#    Updated: 2019/10/14 10:53:50 by lbarthon         ###   ########.fr        #
+#    Updated: 2019/10/14 13:51:23 by lbarthon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,22 +36,18 @@ ACTUAL = 1
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar -rcs libft.a $(OBJ)
-	@printf "\r                                                              \r"
-	@printf "[Libft] Complete\n"
+	ar -rcs libft.a $(OBJ)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c $<
 	@printf "\r                                                              \r"
-	@/bin/echo -n "[Libft] $(ACTUAL) / $(NUMBERS) -- Compiling $<"
-	@$(eval ACTUAL=$(shell echo $$(($(ACTUAL) + 1))))
 
 re: fclean all
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 clean:
-	@rm -f $(OBJ)
+	rm -f $(OBJ)
 
 .PHONY: all re fclean clean
