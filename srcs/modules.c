@@ -6,14 +6,14 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 13:41:13 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/14 12:14:43 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/17 17:55:01 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf_internal.h" 
+#include "printf_internal.h"
 #include "stdio.h"
 
-void	modules_handler(t_printf *data)
+void		modules_handler(t_printf *data)
 {
 	t_flags	flags;
 	char	m;

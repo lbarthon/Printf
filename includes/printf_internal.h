@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 10:10:22 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/15 11:39:00 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/17 17:55:56 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void			buffer_add_format(t_printf *data, size_t end);
 */
 
 void			modules_handler(t_printf *data);
-void		add_with_flags(t_printf *data, t_flags *flags, char *ret
+void			add_with_flags(t_printf *data, t_flags *flags, char *ret
 		, char zero);
 
 #endif
