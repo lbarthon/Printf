@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 10:10:22 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/17 17:55:56 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/17 18:31:11 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ struct			s_printf {
 	t_pfmodule	modules[16];
 	char		modules_len;
 };
+
+/*
+** Includes for file routine.c
+*/
+
+int				printf_routine(t_printf *data);
+void			init_printf(t_printf *data, const char *format, va_list *args);
 
 /*
 ** Includes for file flags.c

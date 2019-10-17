@@ -6,7 +6,7 @@
 #    By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 08:54:45 by lbarthon          #+#    #+#              #
-#    Updated: 2019/10/15 11:39:11 by lbarthon         ###   ########.fr        #
+#    Updated: 2019/10/17 18:30:13 by lbarthon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CFLAGS=-Wall -Werror -Wextra -I includes
 
 NAME=libft.a
 SRCS=./srcs/ft_printf.c \
+		 ./srcs/routines.c \
 		 ./srcs/modules.c \
 		 ./srcs/modules/string.c \
 		 ./srcs/modules/int.c \
