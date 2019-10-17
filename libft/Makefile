@@ -6,7 +6,7 @@
 #    By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:51:15 by lbarthon          #+#    #+#              #
-#    Updated: 2019/10/14 13:51:23 by lbarthon         ###   ########.fr        #
+#    Updated: 2019/10/17 17:41:29 by lbarthon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ FILES=ft_atoi.c ft_lstdel.c ft_memcpy.c ft_putnbr_fd.c ft_strdup.c \
 	  ft_strrchr.c ft_itoa.c ft_memchr.c ft_putendl_fd.c ft_strcpy.c \
 	  ft_strmap.c ft_strsplit.c ft_lstadd.c ft_memcmp.c ft_putnbr.c \
 	  ft_strdel.c ft_strmapi.c ft_strstr.c ft_realloc.c ft_tablength.c \
-	  ft_intlength.c ft_strclen.c ft_strcdup.c ft_fill.c
+	  ft_intlength.c ft_strclen.c ft_strcdup.c ft_fill.c ft_memrev.c
 
 OBJ=$(FILES:.c=.o)
 
