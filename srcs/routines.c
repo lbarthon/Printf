@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 09:06:36 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/18 13:30:36 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/18 14:43:25 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ void			init_printf(t_printf *data, const char *format, va_list *args)
 	data->modules[1] = (t_pfmodule) {&int_handler, 'd'};
 	data->modules[2] = (t_pfmodule) {&pointer_handler, 'p'};
 	data->modules[3] = (t_pfmodule) {&char_handler, 'c'};
-	data->modules_len = 4;
+	data->modules[4] = (t_pfmodule) {&hex_handler, 'x'};
+	data->modules[5] = (t_pfmodule) {&hex_maj_handler, 'X'};
+	data->modules_len = 6;
 }
 
 int				printf_routine(t_printf *data)

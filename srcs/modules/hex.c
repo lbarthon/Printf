@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pointer.c                                          :+:      :+:    :+:   */
+/*   hex.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/14 11:14:48 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/18 14:39:54 by lbarthon         ###   ########.fr       */
+/*   Created: 2019/10/18 13:48:03 by lbarthon          #+#    #+#             */
+/*   Updated: 2019/10/18 14:42:00 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,39 +22,37 @@ static size_t	get_pow(size_t nbr)
 	return (pow / 16);
 }
 
-static void		pointer_end(t_printf *data, t_flags *flags, char hex[32])
+static void		main_handler(t_printf *data, t_flags *flags, char maj)
 {
-	if (!flags->space && (flags->zero || flags->dot))
-	{
-		buffer_add_str(data, "0x", 2);
-		add_with_flags(data, flags, hex + 2, 1);
-	}
-	else
-		add_with_flags(data, flags, hex, 0);
-}
-
-void			pointer_handler(t_printf *data, t_flags *flags)
-{
-	char	hex[32];
-	size_t	addr;
+	char	hex[33];
+	size_t	nbr;
 	size_t	pow;
 	int		i;
 
 	i = 0;
-	hex[i++] = '0';
-	hex[i++] = 'x';
-	addr = (size_t)va_arg(*data->args, void *);
-	pow = get_pow(addr);
+	ft_bzero(hex, 33);
+	nbr = (size_t)va_arg(*data->args, unsigned int);
+	pow = get_pow(nbr);
 	while (pow > 0)
 	{
-		hex[i] = (addr / pow) % 16;
+		hex[i] = (nbr / pow) % 16;
 		if (hex[i] >= 10)
-			hex[i] += 'a' - 10;
+			hex[i] += (maj ? 'A' : 'a') - 10;
 		else
 			hex[i] += 48;
 		pow = pow == 1 ? 0 : pow / 16;
 		i++;
 	}
 	hex[i] = 0;
-	pointer_end(data, flags, hex);
+	add_with_flags(data, flags, hex, flags->zero || flags->dot);
+}
+
+void			hex_maj_handler(t_printf *data, t_flags *flags)
+{
+	main_handler(data, flags, 1);
+}
+
+void			hex_handler(t_printf *data, t_flags *flags)
+{
+	main_handler(data, flags, 0);
 }

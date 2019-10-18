@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 10:10:22 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/18 13:33:33 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/18 14:40:24 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void			string_handler(t_printf *data, t_flags *flags);
 void			int_handler(t_printf *data, t_flags *flags);
 void			pointer_handler(t_printf *data, t_flags *flags);
 void			char_handler(t_printf *data, t_flags *flags);
+void			hex_maj_handler(t_printf *data, t_flags *flags);
+void			hex_handler(t_printf *data, t_flags *flags);
 
 /*
 ** Includes for file buffer.c

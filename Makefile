@@ -6,7 +6,7 @@
 #    By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 08:54:45 by lbarthon          #+#    #+#              #
-#    Updated: 2019/10/17 18:30:13 by lbarthon         ###   ########.fr        #
+#    Updated: 2019/10/18 14:40:36 by lbarthon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS=./srcs/ft_printf.c \
 		 ./srcs/modules/int.c \
 		 ./srcs/modules/pointer.c \
 		 ./srcs/modules/char.c \
+		 ./srcs/modules/hex.c \
 		 ./srcs/buffer.c \
 		 ./srcs/flags.c
 
