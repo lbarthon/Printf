@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 10:10:22 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/17 18:31:11 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/18 13:33:33 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ struct			s_printf {
 	size_t		index;
 	va_list		*args;
 	char		buffer[2048];
+	char		*sprintf;
 	short		buff_len;
 	size_t		total_len;
 	int			fd;

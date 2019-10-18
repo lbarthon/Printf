@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 14:53:13 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/14 10:53:29 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/10/18 13:40:47 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	print_buffer(t_printf *data, char force)
 {
-	if ((!force && data->buff_len != 2048) || data->buff_len == 0)
+	if ((!force && data->buff_len != 2048) || data->buff_len == 0
+			|| data->sprintf)
 		return ;
 	write(data->fd, data->buffer, data->buff_len);
 	data->total_len += data->buff_len;
@@ -23,8 +24,13 @@ void	print_buffer(t_printf *data, char force)
 
 void	buffer_add_char(t_printf *data, char c)
 {
-	data->buffer[data->buff_len++] = c;
-	print_buffer(data, 0);
+	if (!data->sprintf)
+	{
+		data->buffer[data->buff_len++] = c;
+		print_buffer(data, 0);
+	}
+	else
+		data->sprintf[data->buff_len++] = c;
 }
 
 void	buffer_add_str(t_printf *data, char *str, size_t end)
@@ -33,6 +39,12 @@ void	buffer_add_str(t_printf *data, char *str, size_t end)
 	size_t	i;
 
 	i = 0;
+	if (data->sprintf)
+	{
+		ft_memcpy(data->sprintf + data->buff_len, str, end);
+		data->buff_len += end;
+		return ;
+	}
 	while (end > i)
 	{
 		if (end - i <= (size_t)(2048 - data->buff_len))
