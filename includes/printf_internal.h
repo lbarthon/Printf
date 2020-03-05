@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 10:10:22 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/18 14:40:24 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:54:09 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ typedef struct s_printf	t_printf;
 
 typedef struct	s_flags {
 	size_t	minlen;
-	char	dot : 1;
+	char	hash : 1;
+	char	minus : 1;
+	char	plus : 1;
 	char	space : 1;
 	char	zero : 1;
 }				t_flags;
@@ -54,7 +56,7 @@ void			init_printf(t_printf *data, const char *format, va_list *args);
 ** Includes for file flags.c
 */
 
-void			add_flags(t_printf *data, t_flags *flags, size_t end);
+void			parse_flags(t_printf *data, t_flags *flags, size_t end);
 
 /*
 ** Includes for different modules

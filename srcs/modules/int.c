@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 09:59:40 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/14 11:55:38 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:31:45 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ void			int_handler(t_printf *data, t_flags *flags)
 		ret[i++] = ((int)(nbr / pow) % 10) + 48;
 		pow = pow == 1 ? 0 : pow / 10;
 	}
-	add_with_flags(data, flags, ret, flags->zero || flags->dot);
+	add_with_flags(data, flags, ret, flags->zero);
 }

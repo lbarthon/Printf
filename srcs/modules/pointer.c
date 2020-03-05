@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 11:14:48 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/18 14:39:54 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:32:05 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static size_t	get_pow(size_t nbr)
 
 static void		pointer_end(t_printf *data, t_flags *flags, char hex[32])
 {
-	if (!flags->space && (flags->zero || flags->dot))
+	if (!flags->space && flags->zero)
 	{
 		buffer_add_str(data, "0x", 2);
 		add_with_flags(data, flags, hex + 2, 1);

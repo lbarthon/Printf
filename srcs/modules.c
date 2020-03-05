@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 13:41:13 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/18 13:35:17 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:51:31 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		modules_handler(t_printf *data)
 		while (++j < data->modules_len)
 			if (data->modules[j].c == m)
 			{
-				add_flags(data, &flags, i + 1);
+				parse_flags(data, &flags, i + 1);
 				data->modules[j].exec(data, &flags);
 				data->index += i + 1;
 				return ;
@@ -35,6 +35,20 @@ void		modules_handler(t_printf *data)
 		i++;
 	}
 	buffer_add_format(data, i);
+}
+
+static void	add_spaces(t_printf *data, char c[32], int len)
+{
+	while (len > 0)
+	{
+		if (len < 32)
+			buffer_add_str(data, c, len);
+		else
+			buffer_add_str(data, c, 32);
+		if (len < 32)
+			break ;
+		len -= 32;
+	}
 }
 
 void		add_with_flags(t_printf *data, t_flags *flags, char *ret, char zero)
@@ -49,16 +63,10 @@ void		add_with_flags(t_printf *data, t_flags *flags, char *ret, char zero)
 			ft_fill(c, 32, '0');
 		else
 			ft_fill(c, 32, ' ');
-		while (flags->minlen > l)
-		{
-			if (flags->minlen - l < 32)
-				buffer_add_str(data, c, flags->minlen - l);
-			else
-				buffer_add_str(data, c, 32);
-			if (flags->minlen < 32)
-				break ;
-			flags->minlen -= 32;
-		}
 	}
+	if (!flags->minus)
+		add_spaces(data, c, flags->minlen - l);
 	buffer_add_str(data, ret, l);
+	if (flags->minus)
+		add_spaces(data, c, flags->minlen - l);
 }

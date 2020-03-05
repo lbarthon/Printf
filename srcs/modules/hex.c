@@ -6,7 +6,7 @@
 /*   By: lbarthon <lbarthon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 13:48:03 by lbarthon          #+#    #+#             */
-/*   Updated: 2019/10/18 14:42:00 by lbarthon         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:32:18 by lbarthon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void		main_handler(t_printf *data, t_flags *flags, char maj)
 		i++;
 	}
 	hex[i] = 0;
-	add_with_flags(data, flags, hex, flags->zero || flags->dot);
+	add_with_flags(data, flags, hex, flags->zero);
 }
 
 void			hex_maj_handler(t_printf *data, t_flags *flags)
